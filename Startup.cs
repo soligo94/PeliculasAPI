@@ -8,6 +8,10 @@ using PeliculasAPI.Filtros;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using PeliculasAPI.APIBehavior;
+using PeliculasAPI.Utils;
+using NetTopologySuite.Geometries;
+using NetTopologySuite;
+using AutoMapper;
 
 namespace PeliculasAPI
 {
@@ -24,8 +28,20 @@ namespace PeliculasAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddAutoMapper(typeof(Startup));
+            services.AddSingleton(provider =>
+                new MapperConfiguration(config =>
+                {
+                    var geometryFactory = provider.GetRequiredService<GeometryFactory>();
+                    config.AddProfile(new AutoMapperProfiles(geometryFactory));
+                }).CreateMapper());
+
+            services.AddTransient<IAlmacenadorArchivos, AlmacenadorAzureStorage>();
+
             services.AddDbContext<ApplicationDbContext>(options
-                => options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
+                => options.UseSqlServer(Configuration.GetConnectionString("defaultConnection"),
+                sqlServer => sqlServer.UseNetTopologySuite()));
+
+            services.AddSingleton<GeometryFactory>(NtsGeometryServices.Instance.CreateGeometryFactory(srid: 4326));
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer();
             services.AddControllers(options =>
