@@ -30,7 +30,9 @@ namespace PeliculasAPI.Migrations
                 columns: table => new
                 {
                     PeliculaId = table.Column<int>(type: "int", nullable: false),
-                    ActorId = table.Column<int>(type: "int", nullable: false)
+                    ActorId = table.Column<int>(type: "int", nullable: false),
+                    Personaje = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Orden = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

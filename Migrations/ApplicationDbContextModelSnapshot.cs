@@ -123,6 +123,12 @@ namespace PeliculasAPI.Migrations
                     b.Property<int>("PeliculaId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Orden")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Personaje")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ActorId", "PeliculaId");
 
                     b.HasIndex("PeliculaId");

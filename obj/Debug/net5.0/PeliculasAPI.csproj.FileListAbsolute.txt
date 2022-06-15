@@ -69,3 +69,4 @@ C:\GitReact\React\CursoUdemy\PeliculasAPI\PeliculasAPI\bin\Debug\net5.0\NetTopol
 C:\GitReact\React\CursoUdemy\PeliculasAPI\PeliculasAPI\bin\Debug\net5.0\NetTopologySuite.IO.SqlServerBytes.dll
 C:\GitReact\React\CursoUdemy\PeliculasAPI\PeliculasAPI\obj\Debug\net5.0\EFCoreSqlServerNetTopologySuite.cs
 C:\GitReact\React\CursoUdemy\PeliculasAPI\PeliculasAPI\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\GitReact\React\CursoUdemy\PeliculasAPI\PeliculasAPI\obj\Debug\net5.0\PeliculasAPI.csproj.AssemblyReference.cache
